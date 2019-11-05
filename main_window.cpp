@@ -2,6 +2,7 @@
 #include "ui_main_window.h"
 #include "gl_quad_widget.h"
 #include "gl_sweep_effect_widget.h"
+#include "gl_pixel_effect_widget.h"
 
 #include <QRadioButton>
 #include <QVBoxLayout>
@@ -13,21 +14,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     auto group_box_layout = new QVBoxLayout();
 
-    QRadioButton* original_effect_button = new QRadioButton("原始");
-    group_box_layout->addWidget(original_effect_button);
-    GLQuadWidget* original_effect_widget = new GLQuadWidget(nullptr);
-    ui->stackedWidget->addWidget(original_effect_widget);
-    connect(original_effect_button, &QRadioButton::clicked, [=](bool checked){
-       ui->stackedWidget->setCurrentWidget(original_effect_widget);
-    });
+    auto add_effect = [=](const QString& name, QWidget* widget, bool checked = false)
+    {
+        QRadioButton* effect_button = new QRadioButton(name);
+        group_box_layout->addWidget(effect_button);
+        ui->stackedWidget->addWidget(widget);
+        connect(effect_button, &QRadioButton::clicked, [=](bool checked){
+           ui->stackedWidget->setCurrentWidget(widget);
+        });
 
-    QRadioButton* sweep_effect_button = new QRadioButton("切换", ui->effectGroupBox);
-    group_box_layout->addWidget(sweep_effect_button);
-    GLSweepEffectWidget* sweep_effect_widget = new GLSweepEffectWidget(nullptr);
-    ui->stackedWidget->addWidget(sweep_effect_widget);
-    connect(sweep_effect_button, &QRadioButton::clicked, [=](bool checked){
-       ui->stackedWidget->setCurrentWidget(sweep_effect_widget);
-    });
+        if (checked)
+        {
+            effect_button->click();
+        }
+    };
+
+    add_effect("原始", new GLQuadWidget(nullptr), true);
+    add_effect("切换", new GLSweepEffectWidget(nullptr));
+    add_effect("像素过渡", new GLPixelEffectWidget(nullptr));
 
     auto group_box_spacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
     group_box_layout->addItem(group_box_spacer);

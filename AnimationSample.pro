@@ -25,12 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    gl_pixel_effect_widget.cpp \
         main.cpp \
         main_window.cpp \
     gl_quad_widget.cpp \
     gl_sweep_effect_widget.cpp
 
 HEADERS += \
+    gl_pixel_effect_widget.h \
         main_window.h \
     gl_quad_widget.h \
     gl_sweep_effect_widget.h

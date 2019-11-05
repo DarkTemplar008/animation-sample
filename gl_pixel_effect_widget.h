@@ -1,12 +1,12 @@
-#ifndef GL_SWEEP_EFFECT_WIDGET_H
-#define GL_SWEEP_EFFECT_WIDGET_H
+#ifndef GLPIXELEFFECTWIDGET_H
+#define GLPIXELEFFECTWIDGET_H
 
 #include "gl_quad_widget.h"
 
-class GLSweepEffectWidget : public GLQuadWidget
+class GLPixelEffectWidget : public GLQuadWidget
 {
 public:
-    GLSweepEffectWidget(QWidget* parent = nullptr);
+    GLPixelEffectWidget(QWidget* parent = nullptr);
 
 protected:
     virtual QString pixelShader() const override;
@@ -18,4 +18,4 @@ protected:
     GLfloat         progress_ = 0;
 };
 
-#endif // GL_SWEEP_EFFECT_WIDGET_H
+#endif // GLPIXELEFFECTWIDGET_H

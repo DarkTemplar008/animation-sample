@@ -25,19 +25,6 @@ void GLSweepEffectWidget::createGeometry()
     textures[1] = new QOpenGLTexture(QImage(QString(":/images/landscape2.jpg")));
 }
 
-QString GLSweepEffectWidget::vertexShader() const
-{
-    return "attribute highp vec4 vertex;\n"
-        "attribute mediump vec4 texCoord;\n"
-        "varying mediump vec4 texc;\n"
-        "uniform mediump mat4 matrix;\n"
-        "void main(void)\n"
-        "{\n"
-        "    gl_Position = matrix * vertex;\n"
-        "    texc = texCoord;\n"
-        "}\n";
-}
-
 QString GLSweepEffectWidget::pixelShader() const
 {
     return "uniform sampler2D texture;\n"
