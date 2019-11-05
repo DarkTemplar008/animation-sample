@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        main_window.cpp
+        main_window.cpp \
+    gl_quad_widget.cpp \
+    gl_sweep_effect_widget.cpp
 
 HEADERS += \
-        main_window.h
+        main_window.h \
+    gl_quad_widget.h \
+    gl_sweep_effect_widget.h
 
 FORMS += \
         main_window.ui
@@ -38,3 +42,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    asset.qrc
