@@ -48,3 +48,8 @@ void GLSweepEffectWidget::bindResource()
     textures[1]->bind(1);
     program->setUniformValue("progress", progress_);
 }
+
+void GLSweepEffectWidget::showEvent(QShowEvent *evt)
+{
+    progress_ = 0;
+}

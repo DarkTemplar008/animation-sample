@@ -43,12 +43,12 @@ QString GLPixelEffectWidget::pixelShader() const
         "{\n"
         "    if (progress < 0.5)\n"
         "    {\n"
-        "       vec2 pos = progress/5.0*floor(texc.st*5.0/progress);\n"
+        "       vec2 pos = progress/10.0*floor(texc.st*10.0/progress);\n"
         "       gl_FragColor = texture2D(texture, pos);\n"
         "    }\n"
         "    else\n"
         "    {\n"
-        "       vec2 pos = (1.0 - progress)/5.0*floor(texc.st*5.0/(1.0 - progress));\n"
+        "       vec2 pos = (1.0 - progress)/10.0*floor(texc.st*10.0/(1.0 - progress));\n"
         "       gl_FragColor = texture2D(texture2, pos);\n"
         "    }\n"
         "}\n";
@@ -61,4 +61,9 @@ void GLPixelEffectWidget::bindResource()
     program->setUniformValue("texture2", 1);
     textures[1]->bind(1);
     program->setUniformValue("progress", progress_);
+}
+
+void GLPixelEffectWidget::showEvent(QShowEvent *evt)
+{
+    progress_ = 0;
 }

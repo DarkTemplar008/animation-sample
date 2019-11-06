@@ -9,9 +9,11 @@ public:
     GLPixelEffectWidget(QWidget* parent = nullptr);
 
 protected:
-    virtual QString pixelShader() const override;
-    virtual void    createGeometry() override;
-    virtual void    bindResource() override;
+    QString pixelShader() const override;
+    void    createGeometry() override;
+    void    bindResource() override;
+
+    void    showEvent(QShowEvent* evt) override;
 
 protected:
     QOpenGLTexture* textures[2];
