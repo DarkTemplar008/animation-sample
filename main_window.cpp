@@ -3,6 +3,7 @@
 #include "gl_quad_widget.h"
 #include "gl_sweep_effect_widget.h"
 #include "gl_pixel_effect_widget.h"
+#include "progress_effect_widget.h"
 
 #include <QRadioButton>
 #include <QVBoxLayout>
@@ -32,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     add_effect("原始", new GLQuadWidget(nullptr), true);
     add_effect("切换", new GLSweepEffectWidget(nullptr));
     add_effect("像素过渡", new GLPixelEffectWidget(nullptr));
+    add_effect("增长动画", new ProgressEffectWidget(nullptr));
 
     auto group_box_spacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
     group_box_layout->addItem(group_box_spacer);

@@ -29,13 +29,15 @@ SOURCES += \
         main.cpp \
         main_window.cpp \
     gl_quad_widget.cpp \
-    gl_sweep_effect_widget.cpp
+    gl_sweep_effect_widget.cpp \
+    progress_effect_widget.cpp
 
 HEADERS += \
     gl_pixel_effect_widget.h \
         main_window.h \
     gl_quad_widget.h \
-    gl_sweep_effect_widget.h
+    gl_sweep_effect_widget.h \
+    progress_effect_widget.h
 
 FORMS += \
         main_window.ui
